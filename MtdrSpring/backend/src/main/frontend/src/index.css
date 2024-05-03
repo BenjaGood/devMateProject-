@@ -1,0 +1,87 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f4f9;
+  color: #333;
+}
+
+.App {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  border-radius: 8px;
+}
+
+.App-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #ccc;
+}
+
+.App-logo {
+  height: 50px; /* Ajusta el tamaño según tus necesidades */
+}
+
+#newinputform {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+#newiteminput {
+  flex-grow: 1;
+  padding: 10px;
+  margin-right: 10px;
+  font-size: 16px;
+  border: 2px solid #ddd;
+  border-radius: 4px;
+}
+
+.AddButton {
+  background-color: #5cb85c;
+  color: white;
+}
+
+.itemlist {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.description {
+  font-size: 16px;
+}
+
+.date {
+  color: #888;
+  font-size: 14px;
+}
+
+.DoneButton, .DeleteButton {
+  background-color: #5cb85c;
+  color: white;
+}
+
+.DeleteButton {
+  background-color: #d9534f;
+}
+
+.DoneButton:hover, .DeleteButton:hover {
+  opacity: 0.85;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+td, th {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+h1, h2 {
+  color: #333;
+}
