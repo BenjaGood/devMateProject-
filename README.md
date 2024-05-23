@@ -3,7 +3,7 @@
 
 ## Descripción
 
-Oracle DevMate Bot está diseñado para mejorar la productividad y visibilidad de las actividades del equipo de desarrollo de software. Este chatbot, que adopta la filosofía DevOps, automatiza tareas y proporciona una vista centralizada del manejo de tareas tanto para desarrolladores como para gerentes.
+Oracle DevMate Bot está diseñado para mejorar la productividad y visibilidad de las actividades del equipo de desarrollo de software. Este chatbot, que adopta la filosofía DevOps, automatiza tareas y proporciona una vista centralizada del manejo de tareas tanto para desarrolladores como para gerentes en oracle.
 
 ## Características Principales
 
