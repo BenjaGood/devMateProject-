@@ -9,7 +9,6 @@ env:
   variables:
     "JAVA_HOME": "/usr/lib/jvm/java-11-openjdk"
 
-
   exportedVariables:
     - REGISTRY
     - BUILD_RUN
@@ -37,8 +36,15 @@ steps:
     name: "Build app"
     command: |
       pwd
+      ls
       cd MtdrSpring/backend
+      pwd
+      ls
       mvn clean package spring-boot:repackage -Pnative
+      if [ $? -ne 0 ]; then
+        echo "Maven build failed"
+        exit 1
+      fi
 
   - type: Command
     name: "Build backend image"
