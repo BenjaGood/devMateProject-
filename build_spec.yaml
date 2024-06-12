@@ -34,12 +34,6 @@ steps:
       export PATH=$JAVA_HOME/bin:$PATH
 
   - type: Command
-    name: "Environment check"
-    command: |
-      ls -la
-      mvn --version
-
-  - type: Command
     name: "Build app"
     command: |
       pwd
