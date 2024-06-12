@@ -31,10 +31,10 @@ steps:
     name: "Download Java 11"
     command: |
       cd ${OCI_PRIMARY_SOURCE_DIR};
-      if ! test -d ${OCI_PRIMARY_SOURCE_DIR}/graalvm-ce-java11-21.3.0;
+      if ! test -d ${OCI_PRIMARY_SOURCE_DIR}/graalvm-ce-java11-21.0.0;
       then
         echo "downloading GraalVM Java 11"
-        curl -sL https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-21.3.0/graalvm-ce-java11-linux-amd64-21.3.0.tar.gz | tar xz
+        curl -sL https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-21.0.0/graalvm-ce-java11-linux-amd64-21.0.0.tar.gz | tar xz
         ls
       fi
       echo "finished downloading GraalVM Java 11"
@@ -42,12 +42,13 @@ steps:
   - type: Command
     name: "Install Java 11"
     command: |
-      ${OCI_PRIMARY_SOURCE_DIR}/graalvm-ce-java11-21.3.0/bin/gu install native-image
+      ${OCI_PRIMARY_SOURCE_DIR}/graalvm-ce-java11-11.0.7/bin/gu install native-image
+
 
   - type: Command
-    name: "Set Java path"
+    name: "Set the Java path"
     command: |
-      export JAVA_HOME=${OCI_PRIMARY_SOURCE_DIR}/graalvm-ce-java11-21.3.0
+      export JAVA_HOME=${OCI_PRIMARY_SOURCE_DIR}/graalvm-ce-java11-21.0.0
       export PATH=$JAVA_HOME/bin:$PATH
 
   - type: Command
