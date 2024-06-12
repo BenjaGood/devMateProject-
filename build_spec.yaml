@@ -10,15 +10,15 @@ env:
     "JAVA_HOME": "/usr/lib/jvm/java-11-openjdk"
 
   exportedVariables:
-    - REGISTRY
+    - DOCKER_REGISTRY
     - BUILD_RUN
 
 steps:
   - type: Command
     name: "Setup environment variables"
     command: |
-      export REGISTRY=`echo mx-queretaro-1.ocir.io/axlwhym3ptje/reacttodo/ps8j4`
-      echo "REGISTRY: " ${REGISTRY}
+      export DOCKER_REGISTRY=`echo mx-queretaro-1.ocir.io/axlwhym3ptje/reacttodo/ps8j4`
+      echo "DOCKER_REGISTRY: " ${DOCKER_REGISTRY}
   
   - type: Command
     name: "Define unique image tag"

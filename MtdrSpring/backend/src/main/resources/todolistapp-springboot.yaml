@@ -45,7 +45,7 @@ spec:
     spec:
       containers:
         - name: todolistapp-springboot
-          image: %DOCKER_REGISTRY%/todolistapp-springboot:0.1
+          image: ${DOCKER_REGISTRY}/todolistapp-springboot:${BUILD_RUN}
           imagePullPolicy: Always
           env:
             - name: db_user
@@ -57,21 +57,13 @@ spec:
             - name: driver_class_name
               value: "oracle.jdbc.OracleDriver"
             - name: OCI_REGION
-              value: "%OCI_REGION%"
+              value: "qro.ocir.io"
             - name: dbpassword
-              valueFrom:
-                secretKeyRef:
-                  name: dbuser
-                  key: dbpassword
-                  optional: true
+              value: "Pasoisuew877e9du"
             - name: ui_username
-              value: "%UI_USERNAME%"
+              value: "ManagerUxser"
             - name: ui_password
-              valueFrom:
-                secretKeyRef:
-                  name: frontendadmin
-                  key: password
-                  optional: true
+              value: "Pasoisuew877e"
           volumeMounts:
             - name: creds
               mountPath: /mtdrworkshop/creds
