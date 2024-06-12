@@ -37,7 +37,6 @@ steps:
     name: "Environment check"
     command: |
       ls -la
-      java -version
       mvn --version
 
   - type: Command
