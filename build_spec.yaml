@@ -9,7 +9,6 @@ env:
   variables:
     "JAVA_HOME": "/usr/lib/jvm/java-11-openjdk"
 
-
   exportedVariables:
     - REGISTRY
     - BUILD_RUN
@@ -30,9 +29,8 @@ steps:
   - type: Command
     name: "Download Java 11"
     command: |
-      cd ${OCI_PRIMARY_SOURCE_DIR};
-      if ! test -d ${OCI_PRIMARY_SOURCE_DIR}/graalvm-ce-java11-21.0.0;
-      then
+      cd ${OCI_PRIMARY_SOURCE_DIR}
+      if ! test -d ${OCI_PRIMARY_SOURCE_DIR}/graalvm-ce-java11-21.0.0; then
         echo "downloading GraalVM Java 11"
         curl -sL https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-21.0.0/graalvm-ce-java11-linux-amd64-21.0.0.tar.gz | tar xz
         ls
@@ -42,8 +40,7 @@ steps:
   - type: Command
     name: "Install Java 11"
     command: |
-      ${OCI_PRIMARY_SOURCE_DIR}/graalvm-ce-java11-11.0.7/bin/gu install native-image
-
+      ${OCI_PRIMARY_SOURCE_DIR}/graalvm-ce-java11-21.0.0/bin/gu install native-image
 
   - type: Command
     name: "Set the Java path"
@@ -61,9 +58,16 @@ steps:
   - type: Command
     name: "Build app"
     command: |
-      pwd
+      echo "Current directory before change: $(pwd)"
+      ls
       cd MtdrSpring/backend
+      echo "Current directory after change: $(pwd)"
+      ls
       mvn clean package spring-boot:repackage -Pnative
+      if [ $? -ne 0 ]; then
+        echo "Maven build failed"
+        exit 1
+      fi
 
   - type: Command
     name: "Build backend image"
