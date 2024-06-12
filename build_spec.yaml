@@ -35,10 +35,10 @@ steps:
   - type: Command
     name: "Build app"
     command: |
-      pwd
+      echo "Current directory before change: $(pwd)"
       ls
       cd MtdrSpring/backend
-      pwd
+      echo "Current directory after change: $(pwd)"
       ls
       mvn clean package spring-boot:repackage -Pnative
       if [ $? -ne 0 ]; then
