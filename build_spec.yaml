@@ -9,6 +9,7 @@ env:
   variables:
     "JAVA_HOME": "/usr/lib/jvm/java-11-openjdk"
 
+
   exportedVariables:
     - REGISTRY
     - BUILD_RUN
@@ -27,24 +28,42 @@ steps:
       echo "BUILD_RUN: " $BUILD_RUN
 
   - type: Command
+    name: "Download Java 11"
+    command: |
+      cd ${OCI_PRIMARY_SOURCE_DIR};
+      if ! test -d ${OCI_PRIMARY_SOURCE_DIR}/graalvm-ce-java11-21.0.0;
+      then
+        echo "downloading GraalVM Java 11"
+        curl -sL https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-21.0.0/graalvm-ce-java11-linux-amd64-21.0.0.tar.gz | tar xz
+        ls
+      fi
+      echo "finished downloading GraalVM Java 11"
+
+  - type: Command
+    name: "Install Java 11"
+    command: |
+      ${OCI_PRIMARY_SOURCE_DIR}/graalvm-ce-java11-11.0.7/bin/gu install native-image
+
+
+  - type: Command
     name: "Set the Java path"
     command: |
       export JAVA_HOME=${OCI_PRIMARY_SOURCE_DIR}/graalvm-ce-java11-21.0.0
       export PATH=$JAVA_HOME/bin:$PATH
 
   - type: Command
+    name: "Environment check"
+    command: |
+      ls -la
+      java -version
+      mvn --version
+
+  - type: Command
     name: "Build app"
     command: |
-      echo "Current directory before change: $(pwd)"
-      ls
+      pwd
       cd MtdrSpring/backend
-      echo "Current directory after change: $(pwd)"
-      ls
       mvn clean package spring-boot:repackage -Pnative
-      if [ $? -ne 0 ]; then
-        echo "Maven build failed"
-        exit 1
-      fi
 
   - type: Command
     name: "Build backend image"
