@@ -34,7 +34,7 @@ function NewItem(props) {
           variant="contained"
           disabled={props.isInserting}
         >
-          {props.isInserting ? 'Adding…' : 'Agregar'}
+          {props.isInserting ? 'Adding…' : 'Agregddar'}
         </Button>
       </form>
     </div>
